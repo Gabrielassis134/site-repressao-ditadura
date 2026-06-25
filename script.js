@@ -220,22 +220,6 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape") closeModal();
 });
 
-const accordion = document.querySelector("#worksheetAccordion");
-worksheetSections.forEach((section, index) => {
-  const article = document.createElement("article");
-  article.className = `accordion-item reveal ${index === 0 ? "open" : ""}`;
-  article.innerHTML = `
-    <button class="accordion-trigger" type="button">
-      <span>${section.title}</span>
-      <span>${index === 0 ? "−" : "+"}</span>
-    </button>
-    <div class="accordion-content">
-      <ul>${section.items.map(item => `<li>${item}</li>`).join("")}</ul>
-    </div>
-  `;
-  accordion.appendChild(article);
-});
-
 document.querySelectorAll(".accordion-trigger").forEach(trigger => {
   trigger.addEventListener("click", () => {
     const item = trigger.closest(".accordion-item");
